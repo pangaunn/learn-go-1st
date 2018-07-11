@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"math"
 )
@@ -11,9 +12,9 @@ func init() {
 
 func reverseSlice(s []string) []string {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-        s[i], s[j] = s[j], s[i]
+		s[i], s[j] = s[j], s[i]
 	}
-	
+
 	return s
 }
 
@@ -22,9 +23,9 @@ func main() {
 	// slice := []string{}
 	// slice = append(slice, "aa")
 	// fmt.Println(slice)
-	slice := []string{"1", "2", "5"}
+	// slice := []string{"1", "2", "5"}
 	// reverseSlice
-	fmt.Println(reverseSlice(slice))
+	// fmt.Println(reverseSlice(slice))
 	// fmt.Println(append(slice, 444))
 
 	// map
@@ -40,7 +41,11 @@ func main() {
 
 	// sum, avg := sumAndAvg(2, 3, 4, 7, 9)
 	// fmt.Println(sum, avg)
-
+	maStack := stack{1, 2, 3, 4, 5}
+	maStack = maStack.push(8)
+	fmt.Println(maStack)
+	maStack, _, _ = maStack.pop()
+	fmt.Println(maStack)
 }
 
 func Hello(name, surname string) {
@@ -77,4 +82,21 @@ func isPrime(value int) bool {
 		}
 	}
 	return value > 1
+}
+
+type stack []int
+
+func (s stack) push(a int) stack {
+	s = append(s, a)
+	return s
+}
+
+func (s stack) pop() (stack, int, error) {
+	if len(s) == 0 {
+		err := errors.New("stack dudeeeeeeeeeeee")
+		return stack{}, 0, err
+	}
+
+	s = s[:len(s)-1]
+	return s, s[len(s)-1], nil
 }
