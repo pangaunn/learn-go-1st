@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"math"
+
+	"github.com/pangaunn/learn-go-1st/subject"
 )
 
 func init() {
@@ -41,11 +43,13 @@ func main() {
 
 	// sum, avg := sumAndAvg(2, 3, 4, 7, 9)
 	// fmt.Println(sum, avg)
-	maStack := stack{1, 2, 3, 4, 5}
-	maStack = maStack.push(8)
-	fmt.Println(maStack)
-	maStack, _, _ = maStack.pop()
-	fmt.Println(maStack)
+	// maStack := stack{1, 2, 3, 4, 5}
+	// maStack = maStack.push(8)
+	// fmt.Println(maStack)
+	// maStack, _, _ = maStack.pop()
+	// fmt.Println(maStack)
+
+	fmt.Println(subject.GetSubject())
 }
 
 func Hello(name, surname string) {
