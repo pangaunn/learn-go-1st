@@ -1,5 +1,9 @@
 package subject
 
+type Subject interface {
+	GetSubject() string
+}
+
 func GetSubject() string {
 	return "Subject"
 }
