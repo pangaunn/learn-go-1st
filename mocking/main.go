@@ -7,6 +7,11 @@ import (
 	"time"
 )
 
+type ConfigurableSleeper struct {
+	duration time.Duration
+	sleep    func(time.Duration)
+}
+
 type Sleeper interface {
 	Sleep()
 }
