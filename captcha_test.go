@@ -20,12 +20,12 @@ type RangeMock struct {
 	actualReturn int
 }
 
-func (r Range) rand() int {
-	return random(r.start, r.end)
+func (x Range) rand() int {
+	return random(x.start, x.end)
 }
 
-func (r RangeMock) rand() int {
-	return r.actualReturn
+func (x RangeMock) rand() int {
+	return x.actualReturn
 }
 
 // func main() {
