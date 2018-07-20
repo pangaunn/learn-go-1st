@@ -17,8 +17,11 @@ type Wallet struct {
 }
 
 func (wallet *Wallet) Deposit(depositAmount Bitcoin) {
-	fmt.Printf("address of balance in Deposit is %v \n", &wallet.balance)
 	wallet.balance += depositAmount
+}
+
+func (wallet *Wallet) Withdraw(depositAmount Bitcoin) {
+	wallet.balance -= depositAmount
 }
 
 func (wallet *Wallet) Balance() Bitcoin {
