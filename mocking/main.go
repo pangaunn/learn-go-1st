@@ -12,18 +12,17 @@ type ConfigurableSleeper struct {
 	sleep    func(time.Duration)
 }
 
+func (s *ConfigurableSleeper) Sleep() {
+	s.sleep(s.duration)
+}
+
 type Sleeper interface {
 	Sleep()
 }
 
-type RealSleeper struct{}
-
-func (s *RealSleeper) Sleep() {
-	time.Sleep(1 * time.Second)
-}
-
 func main() {
-	Countdown(os.Stdout, &RealSleeper{})
+	sleeper := &ConfigurableSleeper{1 * time.Second, time.Sleep}
+	Countdown(os.Stdout, sleeper)
 }
 
 const finalWord = "Go!"
