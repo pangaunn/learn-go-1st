@@ -1,6 +1,9 @@
 package ooo
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type Stringer interface {
 	String() string
@@ -20,8 +23,15 @@ func (wallet *Wallet) Deposit(depositAmount Bitcoin) {
 	wallet.balance += depositAmount
 }
 
-func (wallet *Wallet) Withdraw(depositAmount Bitcoin) {
-	wallet.balance -= depositAmount
+var ErrInsufficientFunds = errors.New("cannot withdraw, insufficient funds")
+
+func (wallet *Wallet) Withdraw(withdrawAmount Bitcoin) error {
+	if withdrawAmount > wallet.balance {
+		return ErrInsufficientFunds
+	}
+
+	wallet.balance -= withdrawAmount
+	return nil
 }
 
 func (wallet *Wallet) Balance() Bitcoin {
